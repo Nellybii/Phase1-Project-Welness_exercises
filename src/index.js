@@ -3,24 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let openDetails = null; // to track the currently open exercise details
   let button1 = document.getElementById("btn");
   let container = document.querySelector(".container");
-  //console.log(button1);
-  // eventlistener to allow the user search on the desired exercise
-  button1.addEventListener("click", (e) => {
-    const exerciseDetails = document.querySelectorAll(".container");
 
-    exerciseDetails.forEach((exerciseDetail) => {
-      const difficultyElement = exerciseDetail.querySelector("li:nth-child(4)"); // Adjust the selector
-      if (difficultyElement) {
-        const difficulty = difficultyElement.textContent.replace("Difficulty: ", "");
-
-        if (difficulty === "beginner") {
-          exerciseDetail.style.display = "none";
-        } else {
-          exerciseDetail.style.display = "block";
-        }
-      }
-    });
-  });
   function getAllExercises() {
     fetch("https://api.api-ninjas.com/v1/exercises", {
       method: "GET",
@@ -34,7 +17,8 @@ document.addEventListener("DOMContentLoaded", function () {
           // a new paragraph for each exercise and display the exercise name
           let div1 = document.createElement("div");
           div1.className = "row row-cols-1 row-cols-md-3";
-          div1.style ="width: 900px"
+          div1.style = "width: 900px";
+          div1.display = "center";
           container.appendChild(div1);
           let div2 = document.createElement("div");
           div2.className = "col";
@@ -47,14 +31,13 @@ document.addEventListener("DOMContentLoaded", function () {
           div3.appendChild(div4);
           let h5 = document.createElement("h5");
           h5.innerHTML = exercise.name;
-          h5.style.color = "blue"
-          h5.style.display = "grid"
+          h5.style.color = "blue";
+          h5.style.display = "grid";
           div4.appendChild(h5);
           let p = document.createElement("p");
           p.className = "card-text";
           div4.appendChild(p);
 
-          // a list for exercise details and set additional details
           let exerciseDetails = document.createElement("ul");
           p.appendChild(exerciseDetails);
           exerciseDetails.className = "details";
@@ -110,6 +93,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Update the currently open details
             openDetails = exerciseDetails;
+          });
+          // eventlistener to allow the user search on the desired exercise
+          button1.addEventListener("click", (e) => {
+            const exerciseDetails = document.querySelector(".container");
+            function iterationThroughDetails(){
+            exerciseDetails.forEach((exerciseDetail) => {
+              const difficultyElement =
+                exerciseDetail.querySelector("li:nth-child(4)"); // Adjust the selector
+              if (difficultyElement) {
+                const difficulty = difficultyElement.textContent.replace(
+                  "Difficulty: ",
+                  ""
+                );
+
+                if (difficulty === "beginner") {
+                  exerciseDetail.style.display = "none";
+                } else {
+                  exerciseDetail.style.display = "block";
+                }
+              }
+            });
+          }
           });
         });
       })
