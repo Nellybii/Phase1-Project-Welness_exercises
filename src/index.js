@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
   let id = document.querySelector("#exers");
-  //console.log(id);
+  let openDetails = null; // to track the currently open exercise details
+    console.log(button1);
+
   function getAllExercises() {
     fetch("https://api.api-ninjas.com/v1/exercises", {
       method: "GET",
@@ -16,21 +18,38 @@ document.addEventListener("DOMContentLoaded", function () {
           p.innerHTML = exercise.name;
           id.appendChild(p);
           p.style.color = "blue";
-          // exerciseDetails.style.display === "hidden" and display on click
+          p.style.display = "flex";
+
+          // a list for exercise details and set additional details
+          let exerciseDetails = document.createElement("ul");
+          exerciseDetails.className = "details";
+          exerciseDetails.style.color = "#151515";
+          exerciseDetails.style.display = "none"; // Initially hide details
+          exerciseDetails.innerHTML = `
+                  <li>Type: ${exercise.type}</li>
+                  <li>Muscle: ${exercise.muscle}</li>
+                  <li>Equipment: ${exercise.equipment}</li>
+                  <li>Difficulty: ${exercise.difficulty}</li>
+                  <li>Description: ${exercise.description}</li>
+              `;
+
+          p.appendChild(exerciseDetails);
+
+          // Add a click event listener to each exercise
           p.addEventListener("click", (e) => {
             e.preventDefault();
-            let exerciseDetails = document.createElement("ul");
-            exerciseDetails.className = "details";
-            exerciseDetails.style.color = "#151515";
 
-            p.appendChild(exerciseDetails);
-            exerciseDetails.innerHTML = `
-                <li>${exercise.type}</li>
-                <li>${exercise.muscle}</li>
-                <li>${exercise.equipment}</li>
-                <li>${exercise.difficulty}</li>
-                <li>${exercise.descrption}</li>
-                `;
+            // Close any previously open details
+            if (openDetails) {
+              openDetails.style.display = "none";
+            }
+
+            // Toggle the clicked exercise's details
+            exerciseDetails.style.display =
+              exerciseDetails.style.display === "none" ? "block" : "none";
+
+            // Update the currently open details
+            openDetails = exerciseDetails;
           });
         });
       })
