@@ -6,18 +6,12 @@ document.addEventListener("DOMContentLoaded", function () {
   //console.log(button1);
   // eventlistener to allow the user search on the desired exercise
   button1.addEventListener("click", (e) => {
-    // Get all the exercise detail elements with class "details"
-    const exerciseDetails = document.querySelectorAll(".details");
+    const exerciseDetails = document.querySelectorAll(".container");
 
     exerciseDetails.forEach((exerciseDetail) => {
-      // Find the difficulty within the exercise details
-      const difficultyElement = exerciseDetail.querySelector("li"[3]);
-      //console.log(difficultyElement)
+      const difficultyElement = exerciseDetail.querySelector("li:nth-child(4)"); // Adjust the selector
       if (difficultyElement) {
-        const difficulty = difficultyElement.textContent.replace(
-          "Difficulty: ",
-          ""
-        );
+        const difficulty = difficultyElement.textContent.replace("Difficulty: ", "");
 
         if (difficulty === "beginner") {
           exerciseDetail.style.display = "none";
@@ -39,7 +33,8 @@ document.addEventListener("DOMContentLoaded", function () {
         exercises.forEach((exercise) => {
           // a new paragraph for each exercise and display the exercise name
           let div1 = document.createElement("div");
-          div1.className = "row row-cols-1 row-cols-md-3 g-4";
+          div1.className = "row row-cols-1 row-cols-md-3";
+          div1.style ="width: 900px"
           container.appendChild(div1);
           let div2 = document.createElement("div");
           div2.className = "col";
@@ -52,10 +47,12 @@ document.addEventListener("DOMContentLoaded", function () {
           div3.appendChild(div4);
           let h5 = document.createElement("h5");
           h5.innerHTML = exercise.name;
+          h5.style.color = "blue"
+          h5.style.display = "grid"
           div4.appendChild(h5);
           let p = document.createElement("p");
           p.className = "card-text";
-          h5.appendChild(p);
+          div4.appendChild(p);
 
           // a list for exercise details and set additional details
           let exerciseDetails = document.createElement("ul");
@@ -66,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   <li>Type: ${exercise.type}</li>
                   <li>Muscle: ${exercise.muscle}</li>
                   <li>Equipment: ${exercise.equipment}</li>
-                  <li id="diff">Difficulty: ${exercise.difficulty}</li>
+                  <li>Difficulty: ${exercise.difficulty}</li>
                   <li>Instruction: ${exercise.instructions}</li>
               `;
           let div = document.createElement("div");
