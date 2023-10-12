@@ -1,5 +1,9 @@
-div{
-    display: flex;
-    
-    
+.container{
+    float: left;
+   width: fit-content;
+  background-color: aqua;
+}
+#details{
+    float: left;
+    width: 400px;
 }
