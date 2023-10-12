@@ -1,5 +1,5 @@
-h5{
-    display: grid;
-    grid: template columns 800px ;
+div{
+    display: flex;
+    
     
 }
