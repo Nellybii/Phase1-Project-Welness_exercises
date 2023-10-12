@@ -15,7 +15,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     console.log(beginnerExercise);
   });
+  let intermediate = document.querySelector("#btn_2");
+  intermediate.addEventListener("click", (e) => {
+    e.preventDefault();
 
+    const intermediateExercise = globalExercises.filter(
+      (e) => e.difficulty === "intermediate"
+    );
+
+    renderAllExercises(intermediateExercise);
+
+    console.log(intermediateExercise);
+  });
   //rendering all exercise
   function renderAllExercises(exercises) {
     exercises.forEach((exercise) => {
