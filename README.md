@@ -17,9 +17,6 @@ A user should  see the names of the exercises
 A user can click on the name to see the details
 A user can like or dislike the exercise
 
-
-
-## Criteria met
 A well documented readme that any developer can use.
 This project is in a polished, portfolio-quality state.
 20 + commits in the project with well detailed commit messages.
