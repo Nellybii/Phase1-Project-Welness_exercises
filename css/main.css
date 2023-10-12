@@ -1,9 +1,14 @@
-.container{
-    float: left;
-   width: fit-content;
-  background-color: aqua;
+.container {
+  float: left;
+  width: fit-content;
+  font-size: larger;
+  color: blue;
 }
-#details{
-    float: left;
-    width: 400px;
+#details {
+  float: left;
+  width: 400px;
+}
+button{
+    background-color: blanchedalmond;
+    text-align: center;
 }

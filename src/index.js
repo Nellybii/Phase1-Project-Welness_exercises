@@ -8,16 +8,16 @@ document.addEventListener("DOMContentLoaded", function () {
       div.appendChild(exerciseList);
       exerciseList.innerHTML = exercise.name;
       let exerciseDetails = document.querySelector("#details");
-      //console.log(exerciseDetails)
-      // let beginner = document.querySelector("#btn");
-      // beginner.addEventListener("click", (e) => {
-      //   e.preventDefault();
+      //console.log(exerciseDetails);
+      let beginner = document.querySelector("#btn");
+      beginner.addEventListener("click", (e) => {
+        e.preventDefault();
 
-      //   const beginnerExercise = exercises.filter((exercise) => {
-      //     exercise.difficulty === "beginner";
-      //   });
-      //   console.log(beginnerExercise);
-      // });
+        const beginnerExercise = exercises.filter(
+          (exercise) => exercise.difficulty === "beginner"
+        );
+        //console.log(beginnerExercise);
+      });
       exerciseList.addEventListener("click", (e) => {
         e.preventDefault();
         exerciseDetails.innerHTML = `
@@ -34,7 +34,8 @@ document.addEventListener("DOMContentLoaded", function () {
     <i class="fa fa-thumbs-up" style="font-size:48px;color:grey"></i>
     `;
         const i = document.createElement("i");
-        i.innerHTML = `<i class="fa fa-thumbs-down" style="font-size:48px;color:grey"></i>`;
+        i.innerHTML = `
+        <i class="fa fa-thumbs-down" style="font-size:48px;color:grey"></i>`;
 
         exerciseDetails.appendChild(i);
         icon.addEventListener("click", (e) => {
@@ -45,24 +46,15 @@ document.addEventListener("DOMContentLoaded", function () {
         i.addEventListener("click", (e) => {
           e.preventDefault();
           const clickedi = e.target;
-          if(clickedi.style.color = "blue"){
-            icon.style.color = "grey"
-          }
-          else{
-            i.style.color = "grey"
+          if (clickedi.style.color === "blue") {
+            clickedi.style.color = "grey"; // Change the color of the clicked icon
+          } else {
+            clickedi.style.color = "blue"; // Change the color to blue if it's not already blue
           }
         });
       });
     });
   }
-
-  // btn1.style.color = "grey";
-  // let btn2 = document.createElement("i");
-  // div.appendChild(btn2);
-  // btn2.innerHTML = `
-  //     <i class="fa fa-thumbs-down"></i>
-  //     `;
-  // btn2.style.color = "grey";
 
   function getAllExercises() {
     fetch("https://api.api-ninjas.com/v1/exercises", {
