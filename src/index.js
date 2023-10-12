@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     renderAllExercises(intermediateExercise);
 
-    console.log(intermediateExercise);
+    //console.log(intermediateExercise);
   });
   //rendering all exercise
   function renderAllExercises(exercises) {
