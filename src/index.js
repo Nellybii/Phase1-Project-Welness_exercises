@@ -1,5 +1,21 @@
+let globalExercises = null;
+
 document.addEventListener("DOMContentLoaded", function () {
   let div = document.querySelector(".container");
+
+  let beginner = document.querySelector("#btn");
+  beginner.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const beginnerExercise = globalExercises.filter(
+      (e) => e.difficulty === "beginner"
+    );
+
+    renderAllExercises(beginnerExercise);
+
+    console.log(beginnerExercise);
+  });
+
   //rendering all exercise
   function renderAllExercises(exercises) {
     exercises.forEach((exercise) => {
@@ -9,15 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
       exerciseList.innerHTML = exercise.name;
       let exerciseDetails = document.querySelector("#details");
       //console.log(exerciseDetails);
-      let beginner = document.querySelector("#btn");
-      beginner.addEventListener("click", (e) => {
-        e.preventDefault();
 
-        const beginnerExercise = exercises.filter(
-          (exercise) => exercise.difficulty === "beginner"
-        );
-        console.log(beginnerExercise);
-      });
       exerciseList.addEventListener("click", (e) => {
         e.preventDefault();
         exerciseDetails.innerHTML = `
@@ -64,8 +72,10 @@ document.addEventListener("DOMContentLoaded", function () {
       },
     })
       .then((response) => response.json())
-      .then((exercises) => renderAllExercises(exercises))
-
+      .then((exercises) => {
+        globalExercises = exercises;
+        renderAllExercises(exercises);
+      })
       .catch((error) => console.log("error", error));
   }
 
