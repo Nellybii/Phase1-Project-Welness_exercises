@@ -31,11 +31,10 @@ exercise.difficulty === "beginner"
       });
     });
   }
-  // let div2 = document.createElement("div");
-  // exerciseDetails.appendChild(div2);
-  // let btn1 = document.createElement("i");
-  // div2.appendChild(btn1);
-  // btn1.innerHTML = `
+  
+  let icon1 = document.createElement("i");
+  exerciseDetails.appendChild(icon1);
+  icon1.innerHTML = `
   // <i class="fa fa-thumbs-up"></i>
   //     `;
   // btn1.style.color = "grey";
