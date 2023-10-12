@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-  //let id = document.querySelector("#exers");
   let openDetails = null; // to track the currently open exercise details
   let button1 = document.getElementById("btn");
   let container = document.querySelector(".container");
@@ -97,24 +96,26 @@ document.addEventListener("DOMContentLoaded", function () {
           // eventlistener to allow the user search on the desired exercise
           button1.addEventListener("click", (e) => {
             const exerciseDetails = document.querySelector(".container");
-            function iterationThroughDetails(){
-            exerciseDetails.forEach((exerciseDetail) => {
-              const difficultyElement =
-                exerciseDetail.querySelector("li:nth-child(4)"); // Adjust the selector
-              if (difficultyElement) {
-                const difficulty = difficultyElement.textContent.replace(
-                  "Difficulty: ",
-                  ""
-                );
+            console.log(exerciseDetails)
+            function iterationThroughDetails() {
+              exerciseDetails.forEach((exerciseDetail) => {
+                const difficultyElement =
+                  exerciseDetail.querySelector("li:nth-child(4)");
+                if (difficultyElement) {
+                  const difficulty = difficultyElement.textContent.replace(
+                    "Difficulty: ",
+                    ""
+                  );
 
-                if (difficulty === "beginner") {
-                  exerciseDetail.style.display = "none";
-                } else {
-                  exerciseDetail.style.display = "block";
+                  if (difficulty === "beginner") {
+                    exerciseDetail.style.display = "none";
+                  } else {
+                    exerciseDetail.style.display = "block";
+                  }
                 }
-              }
-            });
-          }
+              });
+            }
+            iterationThroughDetails();
           });
         });
       })
