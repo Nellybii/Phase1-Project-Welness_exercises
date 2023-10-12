@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const beginnerExercise = exercises.filter(
           (exercise) => exercise.difficulty === "beginner"
         );
-        //console.log(beginnerExercise);
+        console.log(beginnerExercise);
       });
       exerciseList.addEventListener("click", (e) => {
         e.preventDefault();
