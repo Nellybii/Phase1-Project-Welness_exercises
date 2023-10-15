@@ -12,3 +12,6 @@ button{
     background-color: blanchedalmond;
     text-align: center;
 }
+.fa{
+  float: left;
+}

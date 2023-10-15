@@ -1,5 +1,4 @@
 let globalExercises = null;
-
 document.addEventListener("DOMContentLoaded", function () {
   let div = document.querySelector(".container");
 
@@ -18,11 +17,10 @@ document.addEventListener("DOMContentLoaded", function () {
   let intermediate = document.querySelector("#btn_2");
   intermediate.addEventListener("click", (e) => {
     e.preventDefault();
-
     const intermediateExercise = globalExercises.filter(
       (e) => e.difficulty === "intermediate"
     );
-
+    //exerciseList.innerHTML = " "
     renderAllExercises(intermediateExercise);
 
     //console.log(intermediateExercise);
@@ -59,11 +57,15 @@ document.addEventListener("DOMContentLoaded", function () {
         exerciseDetails.appendChild(i);
         icon.addEventListener("click", (e) => {
           e.preventDefault();
+          i.innerHTML= " "
+          //icon.innerHTML= " "
           const clickedIcon = e.target;
           clickedIcon.style.color = "red";
         });
         i.addEventListener("click", (e) => {
           e.preventDefault();
+          //i.innerHTML= " "
+          icon.innerHTML= " "
           const clickedi = e.target;
           if (clickedi.style.color === "blue") {
             clickedi.style.color = "grey"; // Change the color of the clicked icon
